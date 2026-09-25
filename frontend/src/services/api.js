@@ -1,7 +1,7 @@
 // FILE: frontend/src/services/api.js
 import { rateLimiter } from '../hooks/useTranscription.js';
 
-const BASE = '/api';
+const BASE = import.meta.env.VITE_API_URL || '/api';
 
 async function post(path, body) {
   const res = await fetch(`${BASE}${path}`, {
