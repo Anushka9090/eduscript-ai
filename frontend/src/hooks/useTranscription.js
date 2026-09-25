@@ -13,11 +13,12 @@
 import { useRef, useCallback, useEffect } from 'react';
 import { useStore } from '../store/index.js';
 import { saveWords } from '../services/db.js';
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const WS_BASE =
+  window.location.hostname === 'localhost'
+    ? 'ws://localhost:3001'
+    : 'wss://eduscript-ai.onrender.com';
 
-const WS_URL = `${API_BASE
-  .replace(/\/api$/, '')
-  .replace(/^http/, 'ws')}/ws/transcribe`;
+const WS_URL = `${WS_BASE}/ws/transcribe`;
 const WORDS_FOR_QUIZ  = 150;
 
 // ── Rate limiter ──────────────────────────────────────────────────────────
