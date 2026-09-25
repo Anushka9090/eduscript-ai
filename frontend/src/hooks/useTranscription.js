@@ -13,9 +13,11 @@
 import { useRef, useCallback, useEffect } from 'react';
 import { useStore } from '../store/index.js';
 import { saveWords } from '../services/db.js';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws/transcribe`;
-const WORDS_FOR_NOTES = 200;
+const WS_URL = `${API_BASE
+  .replace(/\/api$/, '')
+  .replace(/^http/, 'ws')}/ws/transcribe`;
 const WORDS_FOR_QUIZ  = 150;
 
 // ── Rate limiter ──────────────────────────────────────────────────────────
