@@ -19,6 +19,7 @@ const WS_BASE =
     : 'wss://eduscript-ai.onrender.com';
 
 const WS_URL = `${WS_BASE}/ws/transcribe`;
+const WORDS_FOR_NOTES = 200;
 const WORDS_FOR_QUIZ  = 150;
 
 // ── Rate limiter ──────────────────────────────────────────────────────────
